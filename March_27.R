@@ -122,3 +122,72 @@ cat(headers)
 bodies = str_sub(string = emails, start = breaks[,2])
 
 cat(bodies)
+
+
+
+
+
+#### Second Lab
+
+
+# 1. Create the following vector of strings in R
+fruit = c("apple", "banana", 
+          "pear", "pineapple")
+
+
+###############################TABLE##########################################
+####  ? preceding paattern is optional (matched 0 or 1 time)
+####  * preceding paattern is matched 0 or more times
+####  + preceding paattern is matched at least once (1 or more)
+####  {n} preceding paattern is matched exactly n times
+####  {n,m} preceding paattern is matched at least n times & up to m times
+####  {n,} preceding paattern is matched at least n times
+##############################################################################
+
+# 2. Run the following lines of code, and try to understand what's happening.
+
+#detects if patterns are found
+str_detect(fruit, "a")
+
+# patterns that start with a
+str_detect(fruit, "^a")
+
+# patterns that end with a
+str_detect(fruit, "a$")
+
+# pattern to check if it has a OR e OR i OR o OR u
+#   [brackets] represent OR (any of the characters within the brackets)
+str_detect(fruit, "[aeiou]")
+
+# patterns that are between a and d, inclusive
+str_detect(fruit, "[a-d]")
+
+# patterns that are between 0 and 9, inclusive
+str_detect(fruit, "[0-9]")
+
+
+# 3. Using regular expressions, write down a line of R code to detect which of the fruits starts 
+#     with an "a" and ends with an "e"
+
+
+str_detect(fruit, "^a[a-z]*e$")
+
+# . could be any character or number. IMPORTANT for mixed strings
+str_detect(fruit, "a.*e$")
+
+
+# 4. Create a parser that detects phone numbers of this format: 213 740 4826 .
+
+phone = c("213 740 4826", 
+          "213-740-4826",
+          "(213) 740 4826")
+
+# incorporate dashes
+str_detect(phone, "[0-9]{3}[ -][0-9]{3}[ -][0-9]{4}")
+
+
+#incorporate parenthesis option
+str_detect(phone, "[(][0-9]{3}[)]?[ -][0-9]{3}[ -][0-9]{4}")
+### NOTE: this does not work!!!!!!!! Ask Xenia or the professor
+
+           
